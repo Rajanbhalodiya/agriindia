@@ -91,13 +91,13 @@ function TiltProductCard({ product, onSelect }) {
           ))}
         </div>
 
-        <button
+        {/* <button
           onClick={() => onSelect(product)}
           className="w-full py-2.5 rounded-lg bg-primary/10 border border-primary/20 hover:border-primary text-primary hover:text-black hover:bg-primary font-bold text-xs tracking-wider transition-all duration-300 flex items-center justify-center gap-2 group/btn cursor-none"
         >
           <span>{t.analyzeSpecs}</span>
           <FiInfo className="text-sm group-hover/btn:scale-110 transition-transform" />
-        </button>
+        </button> */}
       </div>
     </motion.div>
   );
