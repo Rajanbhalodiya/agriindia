@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { AnimatePresence } from 'framer-motion';
+import { useTheme } from './context/ThemeContext.jsx';
 
 // Core Components
 import LoadingScreen from './components/LoadingScreen';
@@ -41,6 +42,8 @@ export default function App() {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
+  const { theme } = useTheme();
+
   // Mouse spotlight tracker on container
   const handleMouseMove = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -53,7 +56,7 @@ export default function App() {
   return (
     <div 
       onMouseMove={handleMouseMove}
-      className="relative min-h-screen w-full bg-[#050816] text-gray-200 overflow-x-hidden"
+      className="relative min-h-screen w-full overflow-x-hidden bg-[var(--bg-color)] text-[var(--text-color)]"
     >
       <AnimatePresence mode="wait">
         {loading ? (

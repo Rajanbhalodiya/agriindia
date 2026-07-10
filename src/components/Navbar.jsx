@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaLeaf } from 'react-icons/fa';
-import { HiMenuAlt3 } from 'react-icons/hi';
+import { HiMenuAlt3, HiMoon, HiSun } from 'react-icons/hi';
 import { IoCloseSharp } from 'react-icons/io5';
 import { useLanguage } from '../context/LanguageContext';
+import { useTheme } from '../context/ThemeContext.jsx';
 import { translations } from '../utils/translations';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { language, setLanguage } = useLanguage();
+  const { theme, toggleTheme } = useTheme();
   const t = translations[language];
 
   useEffect(() => {
@@ -43,7 +45,7 @@ export default function Navbar() {
         transition={{ duration: 0.8, ease: 'easeOut' }}
         className={`fixed top-0 left-0 w-full z-40 transition-all duration-500 ${
           scrolled 
-            ? 'py-4 bg-[#050816]/75 backdrop-blur-md border-b border-primary/10 shadow-lg' 
+            ? 'py-4 bg-white/80 dark:bg-[#050816]/75 backdrop-blur-md border-b border-primary/10 shadow-lg' 
             : 'py-6 bg-transparent border-b border-transparent'
         }`}
       >
@@ -85,6 +87,15 @@ export default function Navbar() {
               <option value="hi" className="bg-[#050816] text-white">हिन्दी</option>
               <option value="gu" className="bg-[#050816] text-white">ગુજરાતી</option>
             </select>
+
+            {/* Theme Switch */}
+            <button
+              onClick={toggleTheme}
+              className="flex items-center justify-center w-10 h-10 rounded-lg bg-white/5 border border-white/10 text-gray-300 hover:text-primary hover:border-primary/20 transition-all duration-300 cursor-none"
+              aria-label="Toggle theme"
+            >
+              {theme === 'dark' ? <HiSun className="text-lg" /> : <HiMoon className="text-lg" />}
+            </button>
 
             {/* Launch CTA */}
             <a
@@ -138,6 +149,13 @@ export default function Navbar() {
                   <option value="hi" className="bg-[#050816] text-white">हिन्दी</option>
                   <option value="gu" className="bg-[#050816] text-white">ગુજરાતી</option>
                 </select>
+                <button
+                  onClick={toggleTheme}
+                  className="flex items-center justify-center w-10 h-10 rounded-lg bg-white/5 border border-white/10 text-gray-300 hover:text-primary hover:border-primary/20 transition-all duration-300 cursor-none"
+                  aria-label="Toggle theme"
+                >
+                  {theme === 'dark' ? <HiSun className="text-lg" /> : <HiMoon className="text-lg" />}
+                </button>
               </div>
 
               <ul className="flex flex-col gap-5">
