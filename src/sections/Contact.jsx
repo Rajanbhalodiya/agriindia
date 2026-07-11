@@ -15,7 +15,7 @@ export default function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const phone = '9998975861'; 
+    const phone = '9998975861';
     const messageText = `Hello Agri India,
 Name: ${formData.name}
 Email: ${formData.email}
@@ -154,7 +154,7 @@ Message: ${formData.message}`;
                 </div>
                 <div className="flex items-center gap-2 text-sm text-white font-semibold mt-1">
                   <FiPhone className="text-primary" />
-                  <span>+91 95104 59100</span>
+                  <span>+91 9998975861</span>
                 </div>
               </div>
 
