@@ -64,7 +64,7 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pb-12 border-b border-white/5 text-xs font-mono">
           {/* Navigation links */}
           <div className="flex flex-col gap-4">
-            <h5 className="text-[10px] text-gray-500 font-bold uppercase tracking-wider">// PLATFORM INDEX</h5>
+            <h5 className="text-[10px] text-gray-500 font-bold uppercase tracking-wider">PLATFORM INDEX</h5>
             <ul className="flex flex-col gap-2">
               <li><a href="#home" className="text-gray-400 hover:text-primary transition-colors cursor-none">HOME MODULE</a></li>
               <li><a href="#about" className="text-gray-400 hover:text-primary transition-colors cursor-none">ABOUT ARCHIVE</a></li>
@@ -75,7 +75,7 @@ export default function Footer() {
 
           {/* Formulations links */}
           <div className="flex flex-col gap-4">
-            <h5 className="text-[10px] text-gray-500 font-bold uppercase tracking-wider">// FORMULATIONS</h5>
+            <h5 className="text-[10px] text-gray-500 font-bold uppercase tracking-wider">FORMULATIONS</h5>
             <ul className="flex flex-col gap-2">
               <li><a href="#products-portal" className="text-gray-400 hover:text-primary transition-colors cursor-none">{t.catIns.toUpperCase()}</a></li>
               <li><a href="#products-portal" className="text-gray-400 hover:text-primary transition-colors cursor-none">{t.catFun.toUpperCase()}</a></li>
@@ -86,7 +86,7 @@ export default function Footer() {
 
           {/* Core Tech links */}
           <div className="flex flex-col gap-4">
-            <h5 className="text-[10px] text-gray-500 font-bold uppercase tracking-wider">// CORE LABS</h5>
+            <h5 className="text-[10px] text-gray-500 font-bold uppercase tracking-wider">CORE LABS</h5>
             <ul className="flex flex-col gap-2">
               <li><span className="text-gray-600 select-none">AI NEURAL MODULE [v4.1]</span></li>
               <li><span className="text-gray-600 select-none">RTK-GPS DRONE fleets</span></li>
@@ -97,7 +97,7 @@ export default function Footer() {
 
           {/* Legal / Metadata */}
           <div className="flex flex-col gap-4">
-            <h5 className="text-[10px] text-gray-500 font-bold uppercase tracking-wider">// CORE DIAGNOSTICS</h5>
+            <h5 className="text-[10px] text-gray-500 font-bold uppercase tracking-wider">CORE DIAGNOSTICS</h5>
             <div className="flex flex-col gap-2 text-gray-500 text-[10px]">
               <div className="flex justify-between">
                 <span>SYSTEM LINK:</span>
@@ -109,7 +109,7 @@ export default function Footer() {
               </div>
               <div className="flex justify-between">
                 <span>HOST STATE:</span>
-                <span className="text-white">SECURE // IN</span>
+                <span className="text-white">SECURE IN</span>
               </div>
             </div>
           </div>

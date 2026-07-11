@@ -127,7 +127,7 @@ export default function Products() {
     : productsData.filter(p => p.category === selectedCategory);
 
   return (
-    <section id="products" className="relative py-24 md:py-32 w-full overflow-hidden border-t border-white/5">
+    <section id="products" className={`relative py-24 md:py-32 w-full overflow-hidden border-t border-white/5 ${activeProduct ? 'z-50' : ''}`}>
       <div className="absolute inset-0 cyber-grid opacity-10 pointer-events-none" />
 
       {/* Decorative Glow spotlight */}
@@ -210,11 +210,11 @@ export default function Products() {
                 animate={{ scale: 1, y: 0, opacity: 1 }}
                 exit={{ scale: 0.9, y: 30, opacity: 0 }}
                 transition={{ type: 'spring', damping: 25, stiffness: 220 }}
-                className="w-full max-w-2xl glass-panel border border-primary/20 bg-[#050816]/95 p-8 relative overflow-hidden flex flex-col gap-6"
+                className="w-full max-w-2xl glass-panel border border-primary/20 bg-[#050816]/95 p-5 md:p-8 relative overflow-y-auto overflow-x-hidden max-h-[90vh] flex flex-col gap-5 md:gap-6"
               >
                 {/* Tech background elements */}
-                <div className="absolute -top-24 -right-24 w-48 h-48 bg-primary/10 rounded-full blur-2xl" />
-                <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+                <div className="absolute -top-24 -right-24 w-48 h-48 bg-primary/10 rounded-full blur-2xl pointer-events-none" />
+                <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/30 to-transparent pointer-events-none" />
 
                 {/* Modal Header */}
                 <div className="flex justify-between items-start pb-4 border-b border-white/10">
@@ -226,22 +226,22 @@ export default function Products() {
                   </div>
                   <button
                     onClick={() => setActiveProduct(null)}
-                    className="p-2 rounded-lg bg-white/5 border border-white/5 hover:border-primary/20 text-gray-400 hover:text-white transition-all duration-300 cursor-none"
+                    className="p-2 rounded-lg bg-white/5 border border-white/5 hover:border-primary/20 text-gray-400 hover:text-white transition-all duration-300 cursor-none relative z-10"
                   >
                     <FiX className="text-xl" />
                   </button>
                 </div>
 
                 {/* Details Body */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 font-mono text-xs text-gray-300">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 font-mono text-xs text-gray-300">
                   <div className="flex flex-col gap-4">
                     <div>
-                      <span className="text-gray-500 block mb-1 font-semibold uppercase">// {t.about.toUpperCase()}</span>
+                      <span className="text-gray-500 block mb-1 font-semibold uppercase">{t.about.toUpperCase()}</span>
                       <p className="text-gray-400 font-sans leading-relaxed">{activeProduct.description}</p>
                     </div>
 
                     <div>
-                      <span className="text-gray-500 block mb-1 font-semibold uppercase">// {t.prodFormula.toUpperCase()}</span>
+                      <span className="text-gray-500 block mb-1 font-semibold uppercase">{t.prodFormula.toUpperCase()}</span>
                       <code className="text-accent text-sm font-bold bg-accent/5 px-2 py-1 rounded border border-accent/10">
                         {activeProduct.formula}
                       </code>

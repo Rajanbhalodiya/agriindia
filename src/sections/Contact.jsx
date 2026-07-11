@@ -147,7 +147,7 @@ Message: ${formData.message}`;
             {/* Coordinates / Details */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="glass-panel p-5 border border-white/5 flex flex-col gap-2">
-                <span className="text-[9px] font-mono text-gray-500">// COMMUNICATIONS</span>
+                <span className="text-[9px] font-mono text-gray-500">COMMUNICATIONS</span>
                 <div className="flex items-center gap-2 text-sm text-white font-semibold">
                   <FiMail className="text-primary" />
                   <span>support@agriindia.tech</span>
@@ -159,7 +159,7 @@ Message: ${formData.message}`;
               </div>
 
               <div className="glass-panel p-5 border border-white/5 flex flex-col gap-2">
-                <span className="text-[9px] font-mono text-gray-500">// HEADQUARTERS LAB</span>
+                <span className="text-[9px] font-mono text-gray-500">HEADQUARTERS LAB</span>
                 <div className="flex items-start gap-2 text-sm text-white font-semibold leading-relaxed">
                   <FiMapPin className="text-primary mt-1 flex-shrink-0" />
                   <span>{t.contactAddress}</span>
@@ -171,7 +171,7 @@ Message: ${formData.message}`;
             <div className="glass-panel p-6 border border-white/5 relative overflow-hidden flex flex-col justify-between h-[380px] md:h-[400px]">
               <div className="absolute inset-0 cyber-grid opacity-10 pointer-events-none" />
               <div>
-                <p className="text-[10px] font-mono text-gray-500 uppercase tracking-widest">// {t.regionalNetworks}</p>
+                <p className="text-[10px] font-mono text-gray-500 uppercase tracking-widest">{t.regionalNetworks}</p>
                 <h4 className="text-sm font-bold text-white mt-1">{t.stationTelemetry}</h4>
               </div>
 

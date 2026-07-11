@@ -81,7 +81,7 @@ export default function WhyChooseUs() {
               
               <div className="flex justify-between items-center text-[8px] font-mono text-gray-600 border-t border-white/5 pt-4">
                 <span>SYSTEM_KEY: {benefit.refId}</span>
-                <span>SECURE // VALIDATED</span>
+                <span>SECURE | VALIDATED</span>
               </div>
             </motion.div>
           ))}

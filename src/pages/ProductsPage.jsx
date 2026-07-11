@@ -18,13 +18,13 @@ function ProductCard({ product, onSelect }) {
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
-    
+
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
-    
-    const rotateX = ((centerY - y) / centerY) * 10; 
+
+    const rotateX = ((centerY - y) / centerY) * 10;
     const rotateY = ((x - centerX) / centerX) * 10;
-    
+
     card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
     card.style.setProperty('--x', `${x}px`);
     card.style.setProperty('--y', `${y}px`);
@@ -79,7 +79,7 @@ function ProductCard({ product, onSelect }) {
         <h3 className="text-lg font-bold text-white tracking-tight leading-tight group-hover:text-primary transition-colors duration-300">
           {product.name}
         </h3>
-        
+
         {/* Chemical Composition */}
         <p className="text-xs text-glow font-mono text-primary font-semibold line-clamp-2">
           {product.composition || 'Standard Eco Formula'}
@@ -109,7 +109,7 @@ export default function ProductsPage({ onBack }) {
   const [activeProduct, setActiveProduct] = useState(null);
 
   const categories = ['all', 'insecticides', 'fungicides', 'herbicides', 'growth regulators'];
-  
+
   const categoryNames = {
     all: t.catAll,
     insecticides: t.catIns,
@@ -119,8 +119,8 @@ export default function ProductsPage({ onBack }) {
   };
 
   const filteredProducts = productsData.filter((product) => {
-    const matchesSearch = 
-      product.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
+    const matchesSearch =
+      product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       product.composition.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesCategory = selectedCategory === 'all' || product.category === selectedCategory;
     return matchesSearch && matchesCategory;
@@ -136,7 +136,7 @@ Category: ${product.category}`);
   };
 
   return (
-    <div className="relative min-h-screen w-full pt-32 pb-24 px-6 z-20">
+    <div className={`relative min-h-screen w-full pt-32 pb-24 px-6 overflow-x-hidden ${activeProduct ? 'z-50' : 'z-20'}`}>
       {/* Background cyber grid */}
       <div className="absolute inset-0 cyber-grid opacity-15 pointer-events-none" />
 
@@ -145,7 +145,7 @@ Category: ${product.category}`);
       <div className="absolute w-[500px] h-[500px] bg-accent/5 rounded-full blur-[120px] bottom-10 right-10 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto flex flex-col gap-12 relative z-10 w-full">
-        
+
         {/* Header Block */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-white/5 pb-8">
           <div className="flex flex-col items-start gap-4">
@@ -157,7 +157,7 @@ Category: ${product.category}`);
               <span>{t.returnHome.toUpperCase()}</span>
             </button>
             <div>
-              <span className="text-xs font-mono text-accent uppercase tracking-widest">// {t.portalSub}</span>
+              <span className="text-xs font-mono text-accent uppercase tracking-widest">{t.portalSub}</span>
               <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight mt-2 leading-none">
                 {t.portalTitle} <span className="text-primary text-glow">{t.portalTitleHighlight}</span>
               </h1>
@@ -183,11 +183,10 @@ Category: ${product.category}`);
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-4 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition-all duration-300 cursor-none ${
-                selectedCategory === cat
-                  ? 'bg-primary text-black border border-primary shadow-neon-glow'
-                  : 'bg-white/5 border border-white/5 text-gray-400 hover:text-white hover:border-white/10'
-              }`}
+              className={`px-4 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition-all duration-300 cursor-none ${selectedCategory === cat
+                ? 'bg-primary text-black border border-primary shadow-neon-glow'
+                : 'bg-white/5 border border-white/5 text-gray-400 hover:text-white hover:border-white/10'
+                }`}
             >
               {categoryNames[cat]}
             </button>
@@ -220,7 +219,7 @@ Category: ${product.category}`);
         {filteredProducts.length === 0 && (
           <div className="glass-panel p-12 text-center flex flex-col items-center justify-center border border-white/5">
             <span className="text-lg text-gray-500 font-mono mb-2">{t.noFormulasFound}</span>
-            <button 
+            <button
               onClick={() => { setSearchTerm(''); setSelectedCategory('all'); }}
               className="text-xs text-primary font-mono underline hover:text-white cursor-none"
             >
@@ -243,11 +242,11 @@ Category: ${product.category}`);
                 animate={{ scale: 1, y: 0, opacity: 1 }}
                 exit={{ scale: 0.9, y: 30, opacity: 0 }}
                 transition={{ type: 'spring', damping: 25, stiffness: 220 }}
-                className="w-full max-w-2xl glass-panel border border-primary/25 bg-[#050816]/95 p-8 relative overflow-hidden flex flex-col gap-6"
+                className="w-full max-w-2xl glass-panel border border-primary/25 bg-[#050816]/95 p-5 md:p-8 relative overflow-y-auto overflow-x-hidden max-h-[90vh] flex flex-col gap-5 md:gap-6"
               >
                 {/* Background glows */}
-                <div className="absolute -top-24 -right-24 w-48 h-48 bg-primary/10 rounded-full blur-2xl" />
-                <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+                <div className="absolute -top-24 -right-24 w-48 h-48 bg-primary/10 rounded-full blur-2xl pointer-events-none" />
+                <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/30 to-transparent pointer-events-none" />
 
                 {/* Modal Header */}
                 <div className="flex justify-between items-start pb-4 border-b border-white/10">
@@ -259,14 +258,14 @@ Category: ${product.category}`);
                   </div>
                   <button
                     onClick={() => setActiveProduct(null)}
-                    className="p-2 rounded-lg bg-white/5 border border-white/5 hover:border-primary/20 text-gray-400 hover:text-white transition-all duration-300 cursor-none"
+                    className="p-2 rounded-lg bg-white/5 border border-white/5 hover:border-primary/20 text-gray-400 hover:text-white transition-all duration-300 cursor-none relative z-10"
                   >
                     <FiX className="text-xl" />
                   </button>
                 </div>
 
                 {/* Details Body */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 font-mono text-xs text-gray-300">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 font-mono text-xs text-gray-300">
                   {/* Left Column: Image and Formula */}
                   <div className="flex flex-col gap-4">
                     <div className="w-full h-44 bg-[#03050c]/80 rounded-xl border border-white/5 flex items-center justify-center p-4">
@@ -280,9 +279,9 @@ Category: ${product.category}`);
                         className="max-h-full max-w-full object-contain"
                       />
                     </div>
-                    
+
                     <div>
-                      <span className="text-gray-500 block mb-1 font-semibold uppercase">// {t.prodCode}</span>
+                      <span className="text-gray-500 block mb-1 font-semibold uppercase">{t.prodCode}</span>
                       <code className="text-accent text-sm font-bold bg-accent/5 px-2.5 py-1.5 rounded border border-accent/10 block w-max">
                         {activeProduct.code}
                       </code>
@@ -292,19 +291,19 @@ Category: ${product.category}`);
                   {/* Right Column: Spec sheet */}
                   <div className="flex flex-col gap-4 bg-white/5 p-5 rounded-xl border border-white/5">
                     <div>
-                      <span className="text-gray-500 block mb-1 font-semibold uppercase">// {t.chemComp}</span>
+                      <span className="text-gray-500 block mb-1 font-semibold uppercase">{t.chemComp}</span>
                       <p className="text-white text-sm font-semibold">{activeProduct.composition || 'Proprietary Blend'}</p>
                     </div>
 
                     <div>
-                      <span className="text-gray-500 block mb-1 font-semibold uppercase">// {t.appDosage}</span>
+                      <span className="text-gray-500 block mb-1 font-semibold uppercase">{t.appDosage}</span>
                       <p className="text-gray-400 font-sans leading-relaxed">
                         {t.dosageDesc}
                       </p>
                     </div>
 
                     <div>
-                      <span className="text-gray-500 block mb-1 font-semibold uppercase">// {t.safetyRating}</span>
+                      <span className="text-gray-500 block mb-1 font-semibold uppercase">{t.safetyRating}</span>
                       <p className="text-primary font-bold uppercase">{t.safetyDesc}</p>
                     </div>
                   </div>
@@ -315,7 +314,7 @@ Category: ${product.category}`);
                   <span className="text-[10px] font-mono text-gray-500 uppercase tracking-widest text-center sm:text-left">
                     {t.comPortSecure}
                   </span>
-                  
+
                   <div className="flex gap-3 w-full sm:w-auto">
                     <button
                       onClick={() => setActiveProduct(null)}
@@ -323,7 +322,7 @@ Category: ${product.category}`);
                     >
                       {t.closeSpecs}
                     </button>
-                    
+
                     <button
                       onClick={() => handleOrderWhatsApp(activeProduct)}
                       className="px-5 py-2.5 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-black font-bold text-xs tracking-wider transition-all duration-300 flex items-center justify-center gap-2 shadow-neon-glow cursor-none flex-grow sm:flex-grow-0"

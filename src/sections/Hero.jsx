@@ -188,7 +188,7 @@ export default function Hero() {
           <div className="relative w-80 h-[450px] sm:w-[360px] sm:h-[500px] glass-panel border border-white/10 flex flex-col justify-between p-6 overflow-hidden select-none hover:border-primary/20 transition-all duration-500">
             {/* Dynamic Diagnostics */}
             <div className="flex justify-between items-center text-[10px] font-mono text-gray-500">
-              <span>AGRI_BIO_POD // 01</span>
+              <span>AGRI_BIO_POD | 01</span>
               <span className="text-primary animate-pulse">● LIVE STATUS</span>
             </div>
 

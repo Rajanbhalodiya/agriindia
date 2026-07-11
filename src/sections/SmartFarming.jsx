@@ -114,7 +114,7 @@ export default function SmartFarming() {
                       {tech.title}
                     </h3>
                     <span className="text-[10px] font-mono text-gray-500 tracking-wider">
-                      MODULE STATE // ONLINE
+                      MODULE STATE | ONLINE
                     </span>
                   </div>
                   
@@ -149,7 +149,7 @@ export default function SmartFarming() {
                   <div className="flex items-center gap-2">
                     <span className="w-2.5 h-2.5 rounded-full bg-primary animate-pulse" />
                     <span className="text-xs font-mono text-white tracking-widest uppercase">
-                      SYS_COCKPIT // {technologies[activeTab].title}
+                      SYS_COCKPIT | {technologies[activeTab].title}
                     </span>
                   </div>
                   <span className="text-[9px] font-mono text-gray-500">REF_NODE_SYS4.2</span>

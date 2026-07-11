@@ -164,7 +164,7 @@ export default function About() {
             ].map((stat, idx) => (
               <div key={idx} className="glass-panel p-6 relative overflow-hidden group hover:border-primary/20 transition-all duration-300">
                 <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-full blur-xl pointer-events-none" />
-                <p className="text-[10px] font-mono text-gray-500 tracking-wider mb-2 uppercase">DATA_METRIC // 0{idx + 1}</p>
+                <p className="text-[10px] font-mono text-gray-500 tracking-wider mb-2 uppercase">DATA_METRIC | 0{idx + 1}</p>
                 <div className="mb-2">
                   <StatCounter value={stat.val} />
                 </div>
