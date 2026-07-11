@@ -127,7 +127,7 @@ export default function ProductsPage({ onBack }) {
   });
 
   const handleOrderWhatsApp = (product) => {
-    const phone = '9510459100';
+    const phone = '9998975861';
     const message = encodeURIComponent(`Hello Agri India, I would like to inquire about:
 Product: ${product.name}
 Composition: ${product.composition}
