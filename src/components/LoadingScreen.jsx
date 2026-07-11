@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { FaLeaf } from 'react-icons/fa';
 import { useLanguage } from '../context/LanguageContext';
@@ -10,6 +10,23 @@ export default function LoadingScreen({ onComplete }) {
 
   const [progress, setProgress] = useState(0);
   const [loadingText, setLoadingText] = useState(t.loadTexts[0]);
+  
+  const [windowLoaded, setWindowLoaded] = useState(document.readyState === 'complete');
+  const windowLoadedRef = useRef(document.readyState === 'complete');
+
+  useEffect(() => {
+    windowLoadedRef.current = windowLoaded;
+  }, [windowLoaded]);
+
+  useEffect(() => {
+    if (document.readyState === 'complete') {
+      setWindowLoaded(true);
+      return;
+    }
+    const handleLoad = () => setWindowLoaded(true);
+    window.addEventListener('load', handleLoad);
+    return () => window.removeEventListener('load', handleLoad);
+  }, []);
 
   useEffect(() => {
     const texts = t.loadTexts;
@@ -31,6 +48,10 @@ export default function LoadingScreen({ onComplete }) {
             onComplete();
           }, 300);
           return 100;
+        }
+        // Hold progress at 85% until the actual window resources are fully loaded
+        if (prev >= 85 && !windowLoadedRef.current) {
+          return prev;
         }
         const diff = Math.floor(Math.random() * 12) + 8;
         return Math.min(prev + diff, 100);

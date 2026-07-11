@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { useTheme } from './context/ThemeContext.jsx';
 
 // Core Components
@@ -62,7 +62,13 @@ export default function App() {
         {loading ? (
           <LoadingScreen key="loader" onComplete={() => setLoading(false)} />
         ) : (
-          <div key="content" className="relative w-full min-h-screen">
+          <motion.div 
+            key="content" 
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, ease: 'easeOut', delay: 0.15 }}
+            className="relative w-full min-h-screen"
+          >
             {/* Interactive Spotlight background */}
             <div className="radial-spotlight absolute inset-0 z-0 pointer-events-none" />
 
@@ -100,7 +106,7 @@ export default function App() {
 
             {/* Footer */}
             <Footer />
-          </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </div>
