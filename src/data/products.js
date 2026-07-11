@@ -7,6 +7,13 @@ export const productsData = [
     "code": "INS-608"
   },
   {
+    "name": "Mengo",
+    "category": "fungicides",
+    "image": "https://rajan-farm.vercel.app/assets/farm_view_1-CtubKu_o.jpg",
+    "composition": "Metiram 70% WP",
+    "code": "INS-123"
+  },
+  {
     "name": "Agricron",
     "category": "insecticides",
     "image": "https://agriindia.co/images/product/insecticide/agricron.webp",
