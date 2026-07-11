@@ -15,7 +15,7 @@ export default function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const phone = '9998975861';
+    const phone = '9998975861'; 
     const messageText = `Hello Agri India,
 Name: ${formData.name}
 Email: ${formData.email}
