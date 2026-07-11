@@ -20,7 +20,7 @@ export default function LoadingScreen({ onComplete }) {
         textIdx++;
         setLoadingText(texts[textIdx]);
       }
-    }, 600);
+    }, 300);
 
     const progressInterval = setInterval(() => {
       setProgress((prev) => {
@@ -29,13 +29,13 @@ export default function LoadingScreen({ onComplete }) {
           clearInterval(textInterval);
           setTimeout(() => {
             onComplete();
-          }, 600);
+          }, 300);
           return 100;
         }
-        const diff = Math.floor(Math.random() * 8) + 4;
+        const diff = Math.floor(Math.random() * 12) + 8;
         return Math.min(prev + diff, 100);
       });
-    }, 150);
+    }, 60);
 
     return () => {
       clearInterval(progressInterval);

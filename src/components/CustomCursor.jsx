@@ -13,7 +13,13 @@ export default function CustomCursor() {
   const cursorXSpring = useSpring(cursorX, springConfig);
   const cursorYSpring = useSpring(cursorY, springConfig);
 
+  const isMobile = typeof window !== 'undefined' && (
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+    (window.matchMedia && window.matchMedia('(pointer: coarse)').matches)
+  );
+
   useEffect(() => {
+    if (isMobile) return;
     const moveCursor = (e) => {
       cursorX.set(e.clientX);
       cursorY.set(e.clientY);
@@ -58,9 +64,9 @@ export default function CustomCursor() {
       window.removeEventListener('mouseup', handleMouseUp);
       observer.disconnect();
     };
-  }, [isHidden, cursorX, cursorY]);
+  }, [isHidden, cursorX, cursorY, isMobile]);
 
-  if (isHidden) return null;
+  if (isMobile || isHidden) return null;
 
   return (
     <>

@@ -4,7 +4,14 @@ export default function ParticleBackground() {
   const canvasRef = useRef(null);
   const mouseRef = useRef({ x: null, y: null, radius: 150 });
 
+  // Disable particle engine on mobile/touch screens for performance
+  const isMobile = typeof window !== 'undefined' && (
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+    (window.matchMedia && window.matchMedia('(pointer: coarse)').matches)
+  );
+
   useEffect(() => {
+    if (isMobile) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
     
@@ -146,7 +153,9 @@ export default function ParticleBackground() {
       window.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseleave', handleMouseLeave);
     };
-  }, []);
+  }, [isMobile]);
+
+  if (isMobile) return null;
 
   return (
     <canvas

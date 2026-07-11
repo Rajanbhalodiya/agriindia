@@ -2,6 +2,8 @@
 
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-primary: #22c55e;
   --color-secondary: #16a34a;
@@ -64,7 +66,6 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    cursor: none;
   }
   
   body {
@@ -75,7 +76,7 @@
     background-image: 
       radial-gradient(circle at 10% 20%, rgba(34, 197, 94, 0.06) 0%, transparent 40%),
       radial-gradient(circle at 90% 80%, rgba(132, 204, 22, 0.06) 0%, transparent 40%),
-      radial-gradient(circle at 50% 50%, rgba(237, 249, 241, 1) 0%, rgba(248, 253, 246, 1) 100%);
+      radial-gradient(circle at 50% 50%, rgba(5, 8, 22, 1) 0%, rgba(3, 5, 12, 1) 100%);
     background-attachment: fixed;
   }
 
@@ -272,14 +273,26 @@
   background: #22c55e;
 }
 
-/* Custom Cursor support class for interactive elements */
-.interactive-hover {
-  cursor: none;
+@media (pointer: fine) {
+  html, body {
+    cursor: none;
+  }
+  
+  /* Custom Cursor support class for interactive elements */
+  .interactive-hover {
+    cursor: none;
+  }
+
+  /* Hide default cursor on items with custom hover */
+  a, button, select, input, textarea, [role="button"] {
+    cursor: none !important;
+  }
 }
 
-/* Hide default cursor on items with custom hover */
-a, button, select, input, textarea, [role="button"] {
-  cursor: none !important;
+@media (pointer: coarse) {
+  .cursor-none, a, button, select, input, textarea, [role="button"], html, body {
+    cursor: auto !important;
+  }
 }
 
 /* Glow spotlight on background */

@@ -56,7 +56,7 @@ export default function App() {
   return (
     <div 
       onMouseMove={handleMouseMove}
-      className="relative min-h-screen w-full overflow-x-hidden bg-[var(--bg-color)] text-[var(--text-color)]"
+      className="relative min-h-screen w-full overflow-x-hidden bg-transparent text-[var(--text-color)]"
     >
       <AnimatePresence mode="wait">
         {loading ? (
